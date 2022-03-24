@@ -8,7 +8,7 @@ import formatFileSize from 'pretty-file-size';
 export function createReadStreamTest(highWaterMark?: number, skipProgressUpdate = false): FileCopyTest {
     const waterMark =
         highWaterMark != null ? formatFileSize(highWaterMark, 0) : `default (${formatFileSize(1024 * 64, 0)})`;
-    const name = `fs createReadStream: ${waterMark}${skipProgressUpdate ? ' (no progress)' : ''}`;
+    const name = `fs createReadStream${skipProgressUpdate ? ' (no progress)' : ''}: ${waterMark}`;
     return {
         canRun: true,
         description: `fs.createReadStream(sourceFile)${

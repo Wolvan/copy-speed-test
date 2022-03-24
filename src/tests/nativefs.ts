@@ -13,7 +13,7 @@ async function getNativeFsModule() {
 export async function createNativeFSTest(): Promise<FileCopyTest> {
     const nativefs = await getNativeFsModule();
     return {
-        canRun: true,
+        canRun: !!nativefs,
         description: `nativefs module`,
         name: 'nativefs',
         perform: (
