@@ -48,7 +48,7 @@ export async function getFileDetails(path: string): Promise<FileDetails> {
 }
 
 export const kilobyte = 1024;
-const bytesRegExp = /^([\d.]+) (\w+)$/;
+const bytesRegExp = /^([\d.]+) ?(\w+)$/;
 const unitLookup: Record<string, number> = {
     kB: kilobyte,
     MB: kilobyte * kilobyte,
