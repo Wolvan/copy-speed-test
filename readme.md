@@ -20,6 +20,15 @@
 | **force** | **f** | boolean | Will delete the destination folder before starting if it exists. |
 | **testsInSet** | | number | The number of times to run each test. Defaults to 3. |
 | **highWaterMark** | | string[] | An Array of highwatermark values to run the createReadStream test at. Defaults to ['1 MB', '100.0 MB', '500.00 MB', '1.000 GB']. Set multiple values as follows: '--highWaterMark="50 kB,150 MB,1 GB"' |
+| **disableNativeTests** | | boolean | Disable all native copy tests |
+| **disableNativeLinuxTest** | | boolean | Disable Linux native copy test |
+| **disableNativeWindowsTest** | | boolean | Disable Windows native copy test |
+| **disableNativeMacTest** | | boolean | Disable MacOS native copy test |
+| **disableStreamTests** | | boolean | Disable all stream copy tests |
+| **disableDefaultStreamTest** | | boolean | Disable default (64kb) stream copy test |
+| **disableCustomStreamTests** | | boolean | Disable all custom highwatermark stream copy tests |
+| **disableCopyFileTest** | | boolean | Disable fs.copyFile test |
+| **enableSkipStreamProgressTest** | | boolean | Runs stream tests a second time but with the progress reporting disabled |
 | **help** | **h** | boolean | Shows this help guide |
 
 [//]: ####ts-command-line-args_write-markdown_replaceAbove
