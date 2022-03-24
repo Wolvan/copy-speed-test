@@ -54,11 +54,11 @@ async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, by
         testSuite.push(createReadStreamTest());
         if (args.enableSkipStreamProgressTest) testSuite.push(createReadStreamTest(undefined, true));
     }
-    if (!args.disableStreamTests && !args.disableCustomStreamTests) {
-        bytesArray.forEach((bytes) => testSuite.push(createReadStreamTest(bytes)));
-        if (args.enableSkipStreamProgressTest)
-            bytesArray.forEach((bytes) => testSuite.push(createReadStreamTest(bytes, true)));
-    }
+    if (!args.disableStreamTests && !args.disableCustomStreamTests)
+        bytesArray.forEach((bytes) => {
+            testSuite.push(createReadStreamTest(bytes));
+            if (args.enableSkipStreamProgressTest) testSuite.push(createReadStreamTest(bytes, true));
+        });
 
     const tests = testSuite.filter((test) => test.canRun);
     const results: TestResult[] = [];
