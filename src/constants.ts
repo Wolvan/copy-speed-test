@@ -71,6 +71,11 @@ export const parseArgs: ArgumentConfig<FileCopyTestArguments> = {
         defaultValue: false,
         description: 'Disable fs.copyFile test',
     },
+    disableNativeFSLibraryTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable NativeFS module test',
+    },
     enableSkipStreamProgressTest: {
         type: Boolean,
         defaultValue: false,

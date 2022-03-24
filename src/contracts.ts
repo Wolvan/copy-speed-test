@@ -15,6 +15,7 @@ export type FileCopyTestArguments = {
     disableDefaultStreamTest: boolean;
     disableCustomStreamTests: boolean;
     disableCopyFileTest: boolean;
+    disableNativeFSLibraryTest: boolean;
     enableSkipStreamProgressTest: boolean;
 };
 

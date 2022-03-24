@@ -28,6 +28,7 @@
 | **disableDefaultStreamTest** | | boolean | Disable default (64kb) stream copy test |
 | **disableCustomStreamTests** | | boolean | Disable all custom highwatermark stream copy tests |
 | **disableCopyFileTest** | | boolean | Disable fs.copyFile test |
+| **disableNativeFSLibraryTest** | | boolean | Disable NativeFS module test |
 | **enableSkipStreamProgressTest** | | boolean | Runs stream tests a second time but with the progress reporting disabled |
 | **help** | **h** | boolean | Shows this help guide |
 
