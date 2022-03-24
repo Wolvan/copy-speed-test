@@ -15,6 +15,7 @@ import { winNative } from './tests/win-native';
 import formatFileSize from 'pretty-file-size';
 import { createReadStreamTest } from './tests/read-stream';
 import { linuxNative } from './tests/linux-native';
+import { macNative } from './tests/mac-native';
 import { Table } from 'console-table-printer';
 
 const statPromisify = promisify(stat);
@@ -46,6 +47,7 @@ async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, by
     const tests = [
         winNative,
         linuxNative,
+        macNative,
         fsCopyFile,
         createReadStreamTest(),
         ...bytesArray.map(createReadStreamTest),
