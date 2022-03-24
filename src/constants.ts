@@ -31,6 +31,46 @@ export const parseArgs: ArgumentConfig<FileCopyTestArguments> = {
         defaultValue: defaultHighWaterMark,
         description: `An Array of highwatermark values to run the createReadStream test at. Defaults to [${defaultWatermarkString}]. Set multiple values as follows: '--highWaterMark="50 kB,150 MB,1 GB"'`,
     },
+    disableNativeTests: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable all native copy tests',
+    },
+    disableNativeLinuxTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable Linux native copy test',
+    },
+    disableNativeWindowsTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable Windows native copy test',
+    },
+    disableNativeMacTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable MacOS native copy test',
+    },
+    disableStreamTests: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable all stream copy tests',
+    },
+    disableDefaultStreamTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable default (64kb) stream copy test',
+    },
+    disableCustomStreamTests: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable all custom highwatermark stream copy tests',
+    },
+    disableCopyFileTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable fs.copyFile test',
+    },
     help: { type: Boolean, alias: 'h', description: 'Shows this help guide' },
 };
 

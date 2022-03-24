@@ -44,14 +44,17 @@ async function runTests() {
 }
 
 async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, bytesArray: number[]) {
-    const tests = [
-        winNative,
-        linuxNative,
-        macNative,
-        fsCopyFile,
-        createReadStreamTest(),
-        ...bytesArray.map(createReadStreamTest),
-    ].filter((test) => test.canRun);
+    const testSuite = [];
+
+    if (!args.disableNativeTests && !args.disableNativeWindowsTest) testSuite.push(winNative);
+    if (!args.disableNativeTests && !args.disableNativeLinuxTest) testSuite.push(linuxNative);
+    if (!args.disableNativeTests && !args.disableNativeMacTest) testSuite.push(macNative);
+    if (!args.disableCopyFileTest) testSuite.push(fsCopyFile);
+    if (!args.disableStreamTests && !args.disableDefaultStreamTest) testSuite.push(createReadStreamTest());
+    if (!args.disableStreamTests && !args.disableCustomStreamTests)
+        bytesArray.forEach((bytes) => testSuite.push(createReadStreamTest(bytes)));
+
+    const tests = testSuite.filter((test) => test.canRun);
     const results: TestResult[] = [];
 
     for (const test of tests) {

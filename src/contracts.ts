@@ -7,6 +7,14 @@ export type FileCopyTestArguments = {
     help: boolean;
     testsInSet: number;
     highWaterMark: string[];
+    disableNativeTests: boolean;
+    disableNativeLinuxTest: boolean;
+    disableNativeWindowsTest: boolean;
+    disableNativeMacTest: boolean;
+    disableStreamTests: boolean;
+    disableDefaultStreamTest: boolean;
+    disableCustomStreamTests: boolean;
+    disableCopyFileTest: boolean;
 };
 
 export type FileDetails = {
