@@ -71,6 +71,11 @@ export const parseArgs: ArgumentConfig<FileCopyTestArguments> = {
         defaultValue: false,
         description: 'Disable fs.copyFile test',
     },
+    enableSkipStreamProgressTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Runs stream tests a second time but with the progress reporting disabled',
+    },
     help: { type: Boolean, alias: 'h', description: 'Shows this help guide' },
 };
 

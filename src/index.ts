@@ -50,9 +50,15 @@ async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, by
     if (!args.disableNativeTests && !args.disableNativeLinuxTest) testSuite.push(linuxNative);
     if (!args.disableNativeTests && !args.disableNativeMacTest) testSuite.push(macNative);
     if (!args.disableCopyFileTest) testSuite.push(fsCopyFile);
-    if (!args.disableStreamTests && !args.disableDefaultStreamTest) testSuite.push(createReadStreamTest());
-    if (!args.disableStreamTests && !args.disableCustomStreamTests)
+    if (!args.disableStreamTests && !args.disableDefaultStreamTest) {
+        testSuite.push(createReadStreamTest());
+        if (args.enableSkipStreamProgressTest) testSuite.push(createReadStreamTest(undefined, true));
+    }
+    if (!args.disableStreamTests && !args.disableCustomStreamTests) {
         bytesArray.forEach((bytes) => testSuite.push(createReadStreamTest(bytes)));
+        if (args.enableSkipStreamProgressTest)
+            bytesArray.forEach((bytes) => testSuite.push(createReadStreamTest(bytes, true)));
+    }
 
     const tests = testSuite.filter((test) => test.canRun);
     const results: TestResult[] = [];

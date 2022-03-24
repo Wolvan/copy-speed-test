@@ -5,13 +5,15 @@ import progress from 'progress-stream';
 import { ProgressMessage } from 'apply-config';
 import formatFileSize from 'pretty-file-size';
 
-export function createReadStreamTest(highWaterMark?: number): FileCopyTest {
+export function createReadStreamTest(highWaterMark?: number, skipProgressUpdate = false): FileCopyTest {
     const waterMark =
         highWaterMark != null ? formatFileSize(highWaterMark, 0) : `default (${formatFileSize(1024 * 64, 0)})`;
     const name = `fs createReadStream: ${waterMark}`;
     return {
         canRun: true,
-        description: `fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destinationPath))`,
+        description: `fs.createReadStream(sourceFile)${
+            skipProgressUpdate ? '' : '.pipe(progress)'
+        }.pipe(fs.createWriteStream(destinationPath))`,
         name,
         perform: (
             args: FileCopyTestArguments,
@@ -21,7 +23,9 @@ export function createReadStreamTest(highWaterMark?: number): FileCopyTest {
         ) => {
             const destination = join(
                 args.destinationFolder,
-                `${fileDetails.name}_fs-createReadStream_${runCount}${fileDetails.extension}`
+                `${fileDetails.name}_fs-createReadStream${skipProgressUpdate ? '-noprog' : ''}_${runCount}${
+                    fileDetails.extension
+                }`
             );
             const baseMessage = progressMessage.getMessage();
 
@@ -42,7 +46,8 @@ export function createReadStreamTest(highWaterMark?: number): FileCopyTest {
                     progressMessage.updateMessage(message, false);
                 });
 
-                readStream.pipe(progressStream).pipe(writeStream);
+                if (!skipProgressUpdate) readStream.pipe(progressStream).pipe(writeStream);
+                else readStream.pipe(writeStream);
             });
         },
     };

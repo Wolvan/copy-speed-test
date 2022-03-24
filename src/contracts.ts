@@ -15,6 +15,7 @@ export type FileCopyTestArguments = {
     disableDefaultStreamTest: boolean;
     disableCustomStreamTests: boolean;
     disableCopyFileTest: boolean;
+    enableSkipStreamProgressTest: boolean;
 };
 
 export type FileDetails = {
