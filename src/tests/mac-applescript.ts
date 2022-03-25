@@ -12,7 +12,11 @@ export const macFinderCopy: FileCopyTest = {
             const fileName = `${fileDetails.name}_macFinder_${runCount}${fileDetails.extension}`;
             const oldFilename = parse(args.sourceFile).base;
             exec(
-                `osascript -e "tell application \\"Finder\\" to duplicate POSIX file \\"${args.sourceFile}\\" to POSIX file \\"${args.destinationFolder}\\""`,
+                `osascript -e "with timeout of ${
+                    6 * 60 * 60 /* 6 hours */
+                } seconds" -e "tell application \\"Finder\\" to duplicate POSIX file \\"${
+                    args.sourceFile
+                }\\" to POSIX file \\"${args.destinationFolder}\\" with replacing" -e "end timeout"`,
                 (error) => {
                     if (error) {
                         return reject(error);
