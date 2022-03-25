@@ -76,6 +76,11 @@ export const parseArgs: ArgumentConfig<FileCopyTestArguments> = {
         defaultValue: false,
         description: 'Disable NativeFS module test',
     },
+    disableFinderTest: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Disable copying via Finder by using applescript test',
+    },
     enableSkipStreamProgressTest: {
         type: Boolean,
         defaultValue: false,

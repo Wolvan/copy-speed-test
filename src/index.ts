@@ -17,6 +17,7 @@ import { createReadStreamTest } from './tests/read-stream';
 import { linuxNative } from './tests/linux-native';
 import { macNative } from './tests/mac-native';
 import { createNativeFSTest } from './tests/nativefs';
+import { macFinderCopy } from './tests/mac-applescript';
 import { Table } from 'console-table-printer';
 
 const statPromisify = promisify(stat);
@@ -61,6 +62,7 @@ async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, by
             if (args.enableSkipStreamProgressTest) testSuite.push(createReadStreamTest(bytes, true));
         });
     if (!args.disableNativeFSLibraryTest) testSuite.push(await createNativeFSTest());
+    if (!args.disableFinderTest) testSuite.push(macFinderCopy);
 
     const tests = testSuite.filter((test) => test.canRun);
     const results: TestResult[] = [];

@@ -29,6 +29,7 @@
 | **disableCustomStreamTests** | | boolean | Disable all custom highwatermark stream copy tests |
 | **disableCopyFileTest** | | boolean | Disable fs.copyFile test |
 | **disableNativeFSLibraryTest** | | boolean | Disable NativeFS module test |
+| **disableFinderTest** | | boolean | Disable copying via Finder by using applescript test |
 | **enableSkipStreamProgressTest** | | boolean | Runs stream tests a second time but with the progress reporting disabled |
 | **help** | **h** | boolean | Shows this help guide |
 
