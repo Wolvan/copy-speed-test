@@ -43,5 +43,7 @@ export type TestResult = {
     runs: number[];
     name: string;
     average: number;
+    averageSpeed: string;
     best: number;
+    bestSpeed: string;
 };

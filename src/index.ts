@@ -79,8 +79,10 @@ function printResult(results: TestResult[]) {
     const resultsTable = new Table({
         columns: [
             { name: 'name', title: 'Name', color: 'blue' },
-            { name: 'average', title: 'Average' },
-            { name: 'best', title: 'Best' },
+            { name: 'average', title: 'Average Time' },
+            { name: 'averages', title: 'Average Speed' },
+            { name: 'best', title: 'Best Time' },
+            { name: 'bests', title: 'Best Speed' },
         ],
     });
 
@@ -88,7 +90,9 @@ function printResult(results: TestResult[]) {
         resultsTable.addRow({
             name: result.name,
             average: `${result.average.toFixed(2)}s`,
+            averages: `${result.averageSpeed}`,
             best: `${result.best.toFixed(2)}s`,
+            bests: `${result.bestSpeed}`,
         })
     );
 
@@ -122,7 +126,7 @@ async function runSet(test: FileCopyTest, args: FileCopyTestArguments, fileDetai
     console.log(blue(`${test.name} Average: ${averageDisplay} (${averageSpeed}) Best: ${bestDisplay} (${bestSpeed})`));
 
     console.log(' ');
-    return { runs, average: averageTime, best: bestTime, name: test.name };
+    return { runs, average: averageTime, best: bestTime, name: test.name, averageSpeed, bestSpeed };
 }
 
 function calculateStats(runs: number[], fileDetails: FileDetails) {
