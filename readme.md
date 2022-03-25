@@ -31,6 +31,7 @@
 | **disableNativeFSLibraryTest** | | boolean | Disable NativeFS module test |
 | **disableFinderTest** | | boolean | Disable copying via Finder by using applescript test |
 | **enableSkipStreamProgressTest** | | boolean | Runs stream tests a second time but with the progress reporting disabled |
+| **sortResults** | | boolean | Sort results in the final output going from fastest to slowest average. |
 | **help** | **h** | boolean | Shows this help guide |
 
 [//]: ####ts-command-line-args_write-markdown_replaceAbove

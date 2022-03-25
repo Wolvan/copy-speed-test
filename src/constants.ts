@@ -86,6 +86,11 @@ export const parseArgs: ArgumentConfig<FileCopyTestArguments> = {
         defaultValue: false,
         description: 'Runs stream tests a second time but with the progress reporting disabled',
     },
+    sortResults: {
+        type: Boolean,
+        defaultValue: false,
+        description: 'Sort results in the final output going from fastest to slowest average.',
+    },
     help: { type: Boolean, alias: 'h', description: 'Shows this help guide' },
 };
 

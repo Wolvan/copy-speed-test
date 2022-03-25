@@ -18,6 +18,7 @@ export type FileCopyTestArguments = {
     disableNativeFSLibraryTest: boolean;
     disableFinderTest: boolean;
     enableSkipStreamProgressTest: boolean;
+    sortResults: boolean;
 };
 
 export type FileDetails = {

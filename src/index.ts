@@ -42,7 +42,7 @@ async function runTests() {
 
     await cleanUp(args.destinationFolder);
 
-    printResult(results);
+    printResult(results, args.sortResults);
 }
 
 async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, bytesArray: number[]) {
@@ -75,7 +75,7 @@ async function runSets(args: FileCopyTestArguments, fileDetails: FileDetails, by
     return results;
 }
 
-function printResult(results: TestResult[]) {
+function printResult(results: TestResult[], sortResults = false) {
     const resultsTable = new Table({
         columns: [
             { name: 'name', title: 'Name', color: 'blue' },
@@ -86,6 +86,7 @@ function printResult(results: TestResult[]) {
         ],
     });
 
+    if (sortResults) results.sort((a, b) => a.average - b.average);
     results.forEach((result) =>
         resultsTable.addRow({
             name: result.name,
